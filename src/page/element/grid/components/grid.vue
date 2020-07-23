@@ -6,7 +6,7 @@
 			:data="data"
 			ref="setColTable"
 			border
-			show-summary
+			:show-summary="showSummary"
 			style="width: 100%"
 			:class="className">
 			<el-table-column v-for="(col,index) in getColumn"
@@ -58,7 +58,7 @@ const renderTemplate = {
 		column: {
       type: Object,
       default: null
-    }
+		},
 	},
 	render: (h, data) => {
 		const params = {
@@ -78,7 +78,8 @@ export default {
 		data: Array,
 		cols: Array,
 		id: String,
-		className: String
+		className: String,
+		showSummary: Boolean
 	},
 	computed: {
 		getColumnCheckBox() {

@@ -1,5 +1,6 @@
 const childView = () => import('@/page/layout/childView')
-const grid = () => import('@/page/element/index')
+const grid = () => import('@/page/element/grid/index')
+// const form = () => import('@/page/element/form/index')
 
 let element = [
     {
@@ -12,7 +13,12 @@ let element = [
           path: 'grid',
           name: '表格',
           component: grid,
-        }
+        },
+        // {
+        //   path: 'form',
+        //   name: '表单',
+        //   component: form,
+        // }
       ]
     }
   ]

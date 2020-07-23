@@ -7,6 +7,15 @@
       :data="tableData"
       :cols="tableColumn"
       :id="'lululu'"
+			:class-name="'mg-b-20 '"
+			:show-summary="true"
+    />
+    <my-grid
+      :data="tableData"
+      :cols="tableColumn"
+      :id="'lalala'"
+			:show-summary="true"
+			:class-name="'summary-top'"
     />
   </div>
 </template>
