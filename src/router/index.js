@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import element from './element'
 import echart from './echart'
+import domain from './domain'
 const home = () => import('@/page/index')
 const error404 = () => import('@/page/errorPage/404')
 
@@ -22,5 +23,6 @@ export default new Router({
     },
     ...element,
     ...echart,
+    ...domain,
   ]
 })

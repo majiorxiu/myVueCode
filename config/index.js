@@ -10,7 +10,24 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/gaode': {
+        target: 'https://restapi.amap.com',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/gaode': ''   //重写接口
+        }
+      },
+      '/baidu': {
+        target: 'https://api.map.baidu.com',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/baidu': ''   //重写接口
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
