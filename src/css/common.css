@@ -6,6 +6,11 @@
   vertical-align: middle;
   text-align: center;
 }
+.dis-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .page-title {
   font-size: 2rem;
   color: #000;
