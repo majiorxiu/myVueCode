@@ -22,6 +22,9 @@ export default {
   components: {MyMenu, MyHeader},
   mounted () {
     this.$store.dispatch('setMenus', this.$router.options.routes.slice(2))
+  },
+  created () {
+    document.getElementById('vue-load').remove();
   }
 }
 </script>
