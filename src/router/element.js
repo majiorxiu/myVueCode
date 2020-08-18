@@ -1,6 +1,6 @@
 const childView = () => import('@/page/layout/childView')
 const grid = () => import('@/page/element/grid/index')
-// const form = () => import('@/page/element/form/index')
+const filterAssembly = () => import('@/page/element/filter-assembly/index')
 
 let element = [
     {
@@ -14,11 +14,11 @@ let element = [
           name: '表格',
           component: grid,
         },
-        // {
-        //   path: 'form',
-        //   name: '表单',
-        //   component: form,
-        // }
+        {
+          path: 'filter-assembly',
+          name: '筛选条件组件',
+          component: filterAssembly,
+        }
       ]
     }
   ]

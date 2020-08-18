@@ -26,6 +26,14 @@ module.exports = {
         pathRewrite: {
           '^/baidu': ''   //重写接口
         }
+      },
+      '/fineex': {
+        target: 'http://cloud.wms.os.b1.fineex.net',
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: {
+          '^/fineex': ''   //重写接口
+        }
       }
     },
 

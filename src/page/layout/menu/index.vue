@@ -1,5 +1,5 @@
 <template>
-	<el-menu class="el-menu-vertical-demo"
+	<el-menu class="el-menu-vertical-demo text-c"
 		:unique-opened="true">
 		<el-submenu v-for="(item, index) in menus"
 			:index="`m${index}`"

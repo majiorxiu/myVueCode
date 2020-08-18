@@ -65,6 +65,7 @@ export default {
 					label: 'ID',
 					width: '180',
 					align: 'center',
+					fixed: 'left',
 					render: (h, params) => {
 						return h('span', params.row.id + 'a');
 					}
@@ -88,6 +89,7 @@ export default {
 					prop: 'amount1',
 					label: '数值1',
 					width: '180',
+					fixed: 'left',
 					render: (h, params) => {
 						return h('span', params.row.amount1 + '元');
 					}
