@@ -26,20 +26,82 @@
           </template>
         </rows-input>
       </el-form-item>
+      <el-form-item label="之前日期">
+        <el-date-picker
+          v-model="form.date1"
+          type="daterange"
+          align="right"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="within">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="之前日期时间">
+        <el-date-picker
+          v-model="form.date2"
+          type="datetimerange"
+          align="right"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="withinTime">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="未来日期">
+        <el-date-picker
+          v-model="form.date3"
+          type="daterange"
+          align="right"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="next">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="未来日期时间">
+        <el-date-picker
+          v-model="form.date4"
+          type="datetimerange"
+          align="right"
+          unlink-panels
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+          :picker-options="nextTime">
+        </el-date-picker>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="getFilter">查询</el-button>
         <el-button @click="resetForm">重置</el-button>
       </el-form-item>
     </el-form>
+    {{numResult}}
   </div>
 </template>
 <script>
 import TabGrid from './components/tab-grid'
 import RowsInput from './components/rows-input'
 import SelectCity from './components/select-city'
+import {
+  datePickOptionsWithin,
+  datePickOptionsNext,
+  datePickOptionsWithinTime,
+  datePickOptionsNextTime} from '@/mixin/index'
+import getCommand from '@/mixin/getCommand'
 export default {
   name: 'filter-assembly',
   components: { TabGrid, RowsInput, SelectCity},
+  mixins: [
+    datePickOptionsWithin,
+    datePickOptionsNext,
+    datePickOptionsWithinTime,
+    datePickOptionsNextTime,
+    getCommand
+  ],
   data () {
     return {
       form: {
@@ -48,6 +110,10 @@ export default {
         endCity: '',
         orderS2: '',
         type: 1,
+        date1: undefined,
+        date2: undefined,
+        date3: undefined,
+        date4: undefined,
       },
       tabList: [ //配置多个tab
         {
@@ -96,7 +162,12 @@ export default {
             }
           ],
         },
-      ]
+      ],
+      num: {
+        a: 2,
+        b: 2,
+      },
+      numResult: undefined,
     }
   },
   methods: {
@@ -105,7 +176,22 @@ export default {
     },
     resetForm() {
       this.$refs['filterForm'].resetFields();
+    },
+    add ({a,b}) {
+      return a + b
+    },
+    add2 ({a, b})  {
+      return a - b
     }
+  },
+  mounted () {
+    this.bindAction(this.add, 'numResult', 'num', {
+      action: 'abc'
+    })
+    this.bindAction(this.add2, 'numResult', 'num', {
+      action: 'abc2'
+    })
+    this.doAction({action: 'abc'});
   }
 }
 </script>
