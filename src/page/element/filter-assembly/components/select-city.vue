@@ -1,12 +1,12 @@
 <template>
   <div class="select-city">
     <basics-components 
-      :placeholder="'可以输入多个值'"
+      :placeholder="'请选择'"
       v-model="address"
       @show="showCityDialog">
       <template slot="content">
         <div class="city-dialog">
-          <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tabs v-model="activeName">
             <el-tab-pane label="省级" name="first">
               <div>
                 <span class="select-item" v-for="item in level1" 
@@ -34,37 +34,6 @@
         </div>
       </template>
     </basics-components>
-
-    <!-- <div>
-      <el-input v-model="address" readonly/>
-    </div>
-    <transition>
-      <div >
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="省级" name="first">
-            <span v-for="item in level1" 
-              :key="item.CityID"
-              @click="() => {level1Id = item.CityID; level1Name = item.RegionName}">
-              {{item.RegionName}}
-            </span>
-          </el-tab-pane>
-          <el-tab-pane label="市级" name="second">
-            <span v-for="item in level2" 
-              :key="item.CityID"
-              @click="() => {level2Id = item.CityID; level2Name = item.RegionName}">
-              {{item.RegionName}}
-            </span>
-          </el-tab-pane>
-          <el-tab-pane label="区级" name="third">
-            <span v-for="item in level3" 
-              :key="item.CityID"
-              @click="() => {level3Id = item.CityID; address = `${level1Name}/${level2Name}/${item.RegionName}`}">
-              {{item.RegionName}}
-            </span>
-          </el-tab-pane>
-        </el-tabs>
-      </div>
-    </transition> -->
   </div>
 </template>
 <script>
@@ -4290,11 +4259,6 @@ export default {
         ,{"CityID":530825,"ParentCityID":530800,"RegionName":"镇沅彝族哈尼族拉祜族自治县","RegionType":"4","PostNo":"666500"}
         ,{"CityID":530925,"ParentCityID":530900,"RegionName":"双江拉祜族佤族布朗族傣族自治县","RegionType":"4","PostNo":"677300"}
         ,{"CityID":622927,"ParentCityID":622900,"RegionName":"积石山保安族东乡族撒拉族自治县","RegionType":"4","PostNo":"731700"}]
-    },
-    handleClick() {
-
-    },
-    level3Click (item) {
     },
     selectItem (level, item) {
       this[`level${level}Id`] = item.CityID; 

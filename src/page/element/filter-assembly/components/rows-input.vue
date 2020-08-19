@@ -9,6 +9,9 @@
       v-model="strList"
       @show="showTextareaDialog"
       @save="textareaSave">
+      <template slot="input-prepend">
+        <slot name="input-prepend"/>
+      </template>
       <template slot="content">
         <div class="textarea-dialog">
           <span class="tips">批量添加(数据之间换行)</span>

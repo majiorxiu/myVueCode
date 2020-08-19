@@ -14,6 +14,18 @@
         <select-city
           v-model="form.endCity"/>
       </el-form-item>
+      <el-form-item label="运单号">
+        <rows-input
+          v-model="form.orderS2">
+          <template slot="input-prepend">
+            <el-select v-model="form.type" class="w-100">
+              <el-option :value="1">1</el-option>
+              <el-option :value="2">2</el-option>
+              <el-option :value="3">3</el-option>
+            </el-select>
+          </template>
+        </rows-input>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="getFilter">查询</el-button>
         <el-button @click="resetForm">重置</el-button>
@@ -34,6 +46,8 @@ export default {
         ids: '',
         orderS: '',
         endCity: '',
+        orderS2: '',
+        type: 1,
       },
       tabList: [ //配置多个tab
         {
@@ -95,6 +109,10 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+.filter-assembly {
+  .w-100 {
+    width: 100px;
+  }
+}
 </style>

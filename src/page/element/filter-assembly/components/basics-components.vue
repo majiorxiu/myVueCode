@@ -2,6 +2,9 @@
   <div class="basics-input" @click.stop>
     <div>
       <el-input v-model="valstr" :placeholder="placeholder" :readonly="readonly" @change="$emit('input',valstr)" @focus="focusEvent">
+        <template slot="prepend">
+          <slot name="input-prepend"></slot>
+        </template>
         <template slot="append" v-if="inputIconClass">
           <el-button :class="inputIconClass" @click="showDialog"></el-button>
         </template>
