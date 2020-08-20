@@ -101,5 +101,8 @@ module.exports = {
     tls: 'empty',
     child_process: 'empty'
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [new HtmlWebpackPlugin({
+    title: '个人代码收集',
+    template: 'index.html' 
+  })]
 }
