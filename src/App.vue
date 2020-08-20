@@ -13,6 +13,9 @@
         </el-main>
       </el-container>
     </el-container>
+    <div class="router-load" v-show="routerLoad">
+      路由正在跳转
+    </div>
   </div>
 </template>
 
@@ -24,7 +27,9 @@ export default {
   name: 'App',
   components: {MyMenu, MyHeader},
   data() {
-    return {}
+    return {
+      routerLoad: false
+    }
   },
   mounted () {
     this.$store.dispatch('setMenus', this.$router.options.routes.slice(2))
@@ -32,9 +37,21 @@ export default {
   methods: {
     hideDialog() { // 关闭弹窗统一通知
       bus.$emit('hide');
+    },
+    showLoad() {
+      this.routerLoad = true
+    },
+    hideLoad() {
+      this.routerLoad = false
     }
   },
   created () {
+    bus.$on('load-show', val => {
+      this.showLoad()
+    })
+    bus.$on('load-hide', val => {
+      this.hideLoad()
+    })
     document.getElementById('vue-load').remove();
   }
 }
@@ -52,5 +69,20 @@ export default {
 <style lang="scss" scoped>
 .main {
   height: 100%;
+  position: relative;
+  .router-load {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4em;
+    z-index: 999;
+  }
 }
 </style>
