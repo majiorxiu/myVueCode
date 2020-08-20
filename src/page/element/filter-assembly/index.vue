@@ -91,7 +91,7 @@ import {
   datePickOptionsNext,
   datePickOptionsWithinTime,
   datePickOptionsNextTime} from '@/mixin/index'
-import getCommand from '@/mixin/getCommand'
+import getCommand from '@/mixin/get-command'
 export default {
   name: 'filter-assembly',
   components: { TabGrid, RowsInput, SelectCity},
