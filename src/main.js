@@ -9,7 +9,6 @@ import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
 import './css/common.css'
 import './css/reset.css'
-import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 axios.install(Vue)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
