@@ -9,9 +9,13 @@ import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
 import './css/common.css'
 import './css/reset.css'
+
+import plugin from './plugin/index'
+
 axios.install(Vue)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.use(plugin)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

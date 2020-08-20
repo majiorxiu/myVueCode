@@ -4,7 +4,7 @@ function addZero(v, size) {
   };
   return v + "";
 }
-var date = {
+const date = {
   /**
    * [getTimeInterval 获取两个时间的间隔]
    * @author dongsir
@@ -82,4 +82,4 @@ var date = {
   },
 }
 
-module.exports = date;
+export default date
