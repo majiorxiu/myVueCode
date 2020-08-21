@@ -1,5 +1,5 @@
 <template>
-  <div class="basics-input" @click.stop>
+  <div class="basics-input" @click.stop v-is-right>
     <div>
       <el-input v-model="valstr" :placeholder="placeholder" :readonly="readonly" @change="$emit('input',valstr)" @focus="focusEvent">
         <template slot="prepend">
@@ -11,7 +11,7 @@
       </el-input>
     </div>
     <el-collapse-transition mode="in-out">
-      <div class="basics-dialog" v-show="dialogShow">
+      <div class="basics-dialog" v-show="dialogShow" ref="basics-dialog">
         <slot name="content"/>
         <div class="basics-footer text-c" v-if="footer">
           <el-button type="primary" size="mini" class="mg-r-10" @click="$emit('save');hideDialog()">确定</el-button>
@@ -49,6 +49,17 @@ export default {
       }
     }
   },
+  directives:{
+    'is-right':{
+      inserted: function (el) {
+        let offset = el.getBoundingClientRect();
+        let winWidth = window.innerWidth;
+        if(winWidth - offset.right < 300) {
+          el.className += ' pos-right'
+        }
+      }
+    }
+  },
   data () {
     return {
       valstr: '',
@@ -70,9 +81,9 @@ export default {
       if(this.inputFocus) {
         this.showDialog();
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     bus.$on('hide', val => {
       this.hideDialog();
     })
@@ -82,6 +93,11 @@ export default {
 <style lang="scss" scoped>
 .basics-input {
   position: relative;
+  &.pos-right {
+    .basics-dialog{
+      right: 0px;
+    }
+  }
   .basics-dialog {
     position: absolute;
     border: 1px solid $border-color;
