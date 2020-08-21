@@ -8,7 +8,7 @@
         <!-- <el-header>
           <my-header/>
         </el-header> -->
-        <el-main>
+        <el-main class="scroll-bar">
           <router-view/>
         </el-main>
       </el-container>
@@ -83,6 +83,29 @@ export default {
     justify-content: center;
     font-size: 4em;
     z-index: 999;
+  }
+  .scroll-bar::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width : 10px;  /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+  }
+  .scroll-bar::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 10px;
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: $border-color;
+  }
+  .scroll-bar::-webkit-scrollbar-thumb:hover {
+    /*滚动条里面小方块*/
+    cursor: pointer;
+    box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: rgba(144,147,153,.5);
+  }
+  .scroll-bar::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    // box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    background-color: transparent;;
   }
 }
 </style>
