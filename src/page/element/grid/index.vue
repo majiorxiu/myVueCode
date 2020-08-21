@@ -9,6 +9,8 @@
       :id="'lululu'"
 			:class-name="'mg-b-20 '"
 			:show-summary="true"
+      :selection-col="true"
+      v-model="selectList"
     />
     <my-grid
       :data="tableData"
@@ -16,6 +18,8 @@
       :id="'lalala'"
 			:show-summary="true"
 			:class-name="'summary-top'"
+      :selection-col="true"
+      v-model="selectList"
     />
   </div>
 </template>
@@ -57,6 +61,24 @@ export default {
           amount1: '539',
           amount2: '4.1',
           amount3: 15
+        }, {
+          id: '12987127',
+          name: '王小虎',
+          amount1: '678',
+          amount2: '4.22',
+          amount3: 11
+        }, {
+          id: '12987128',
+          name: '王小虎',
+          amount1: '679',
+          amount2: '4.23',
+          amount3: 10
+        }, {
+          id: '12987129',
+          name: '王小虎',
+          amount1: '680',
+          amount2: '4.13',
+          amount3: 9
         }
 			],
 			tableColumn: [
@@ -104,7 +126,8 @@ export default {
 					label: '数值3',
 					sortable: true,
 				}
-			],
+      ],
+      selectList: undefined,
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
 	<div class="pos-rel">
-		<i class="el-icon-setting pos-abs" @click="showDialog"/>
+		<i class="el-icon-setting pos-abs" :class="{'new-pos': selectionCol}" @click="showDialog"/>
 		<el-table
 			:id="id"
 			:data="data"
@@ -8,7 +8,12 @@
 			border
 			:show-summary="showSummary"
 			style="width: 100%"
+			@selection-change="handleSelectionChange"
 			:class="className">
+			<el-table-column
+				v-show="selectionCol"
+				type="selection"
+				width="70"/>
 			<el-table-column v-for="(col,index) in getColumn"
 			 :key="index"
 			 :prop="col.prop"
@@ -85,11 +90,18 @@ export default {
 	name: 'grid',
 	components: { renderTemplate },
 	props: {
-		data: Array,
-		cols: Array,
-		id: String,
-		className: String,
-		showSummary: Boolean
+		data: Array, //数据源
+		cols: Array, //配置列
+		id: String,	//保持整项目唯一，用于保存表格设置的key
+		className: String, // 外部 css 样式， summary-top 已设定 合计栏移至第一行
+		showSummary: Boolean, // 是否显示合计栏
+		value: { // 行选择赋值
+			default: undefined,
+		},
+		selectionCol: { // 是否开启选择列
+			type: Boolean,
+			default: false,
+		},
 	},
 	data() {
 		return {
@@ -171,6 +183,9 @@ export default {
 			let item = list[index];
 			this.$set(this.columnCheckBox, index, list[to]);
 			this.$set(this.columnCheckBox, to, item);
+		},
+		handleSelectionChange(val) {
+			this.$emit('input', val)
 		}
 	},
 	mounted () {
@@ -180,9 +195,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .pos-rel {
-	position: relative;
 	.pos-abs {
-		position: absolute;
 		&.el-icon-setting {
 			z-index: 99;
 			left: 20px;
@@ -191,6 +204,9 @@ export default {
 			&:hover {
 				color: #409EFF;
 			}
+		}
+		&.new-pos{
+			left: 40px;
 		}
 	}
 }
