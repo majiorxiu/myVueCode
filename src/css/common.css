@@ -48,6 +48,12 @@
 .mg-r-10 {
   margin-right: 10px;
 }
+.pos-rel {
+  position: relative;
+}
+.pos-abs {
+  position: absolute;
+}
 div.summary-top div.el-table__body-wrapper,
 div.summary-top div.el-table__fixed-body-wrapper {
   margin-top: 49px;
