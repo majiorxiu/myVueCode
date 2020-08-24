@@ -7,10 +7,10 @@ import ElementUI from 'element-ui'
 import axios from './server'
 import store from './store'
 import 'element-ui/lib/theme-chalk/index.css'
-import './css/common.css'
-import './css/reset.css'
 
 import plugin from './plugin/index'
+import '@/assets/css/reset.css'
+import '@/assets/css/common.css'
 
 axios.install(Vue)
 Vue.config.productionTip = false

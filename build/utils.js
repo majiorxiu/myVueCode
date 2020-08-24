@@ -34,6 +34,11 @@ exports.cssLoaders = function (options) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
+      if (loader === 'sass-resources') {
+        loaders.push({
+          loader: 'sass-loader'
+        })
+      }
       loaders.push({
         loader: loader + '-loader',
         options: Object.assign({}, loaderOptions, {
@@ -45,10 +50,7 @@ exports.cssLoaders = function (options) {
     // Extract CSS when that option is specified
     // (which is the case during production build)
     if (options.extract) {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
+      return [{loader: MiniCssExtractPlugin.loader, options: {publicPath: '../../'}}].concat(loders)
     } else {
       return ['vue-style-loader'].concat(loaders)
     }
@@ -59,12 +61,11 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass').concat({
-      loader:'sass-resources-loader',
-      options:{
-        resources:path.resolve(__dirname,'../src/css/global.scss')
-      }
+    sass: generateLoaders('sass-resources', {
+      resources: [resolveResource('../src/assets/css/global.scss')]
+    }),
+    scss: generateLoaders('sass-resources', {
+      resources: [resolveResource('../src/assets/css/global.scss')]
     }),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
