@@ -23,8 +23,21 @@
         </template>
       </el-input>
     </div>
-    <div>
+    <div class="mg-b-20">
       百度定位IP所在地为：{{address2}}
+    </div>
+    <div class="mg-b-20" >
+      <el-input v-model="myform3.addressKey" placeholder="请输入目标地址">
+        <template slot="append">
+          <el-button 
+            @click="ajaxBaiduAddressGet">
+            百度地址联想
+          </el-button>
+        </template>
+      </el-input>
+    </div>
+    <div>
+      地点联想结果：{{address2}}
     </div>
   </div>
 </template>
@@ -39,8 +52,13 @@ export default {
       myform2: {
         ip: undefined,
       },
+      myform3: {
+        ip: undefined,
+      },
       address: undefined,
       address2: undefined,
+      addressKey: undefined,
+      addressList: [],
     }
   },
   methods: {
@@ -68,6 +86,18 @@ export default {
         if(res.status === 0){
           this.address2 = res.content.address;
         }
+      })
+    },
+    ajaxBaiduAddressGet () {
+      let form = this.myform3
+      this.$ajax.get('/baidu/place/v2/suggestion', {
+        params: {
+          ak: 'RVn81xPM6n1EpUo5SMsoFCcgul5rAWfN',
+          query: form.addressKey,
+          region: '全国'
+        }
+      }).then((res) => {
+        console.log(res);
       })
     }
   },

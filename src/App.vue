@@ -103,7 +103,6 @@ export default {
   }
   .scroll-bar::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
-    // box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background-color: transparent;;
   }

@@ -72,6 +72,9 @@ module.exports = {
 						options: {
 							resources: resolve(__dirname, '../src/assets/css/global.scss')
 						}
+					},
+					{
+						loader: 'postcss-loader'
 					}
 				]
 			},

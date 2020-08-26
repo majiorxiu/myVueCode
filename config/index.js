@@ -5,38 +5,9 @@
 const path = require('path')
 
 module.exports = {
-  dev: {
-
-    // Paths
+  devServer: {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/gaode': {
-        target: 'https://restapi.amap.com',
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/gaode': ''   //重写接口
-        }
-      },
-      '/baidu': {
-        target: 'https://api.map.baidu.com',
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/baidu': ''   //重写接口
-        }
-      },
-      '/fineex': {
-        target: 'http://cloud.wms.os.b1.fineex.net',
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/fineex': ''   //重写接口
-        }
-      }
-    },
-
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

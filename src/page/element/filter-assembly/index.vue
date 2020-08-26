@@ -182,6 +182,12 @@ export default {
     },
     add2 ({a, b})  {
       return a - b
+    },
+    f1btn (event) {
+      if(event.keyCode === 112) { // 拦截f1-f12 快捷键
+        this.numResult = 111
+        event.returnValue = false;
+      }
     }
   },
   mounted () {
@@ -191,7 +197,8 @@ export default {
     this.bindAction(this.add2, 'numResult', 'num', {
       action: 'abc2'
     })
-    this.doAction({action: 'abc'});
+    // this.doAction({action: 'abc2'});
+    window.addEventListener('keydown', this.f1btn, true)
   }
 }
 </script>
