@@ -6,17 +6,16 @@ import router from './router/permission'
 import ElementUI from 'element-ui'
 import axios from './server'
 import store from './store'
-import 'element-ui/lib/theme-chalk/index.css'
-
 import plugin from './plugin/index'
-import '@/assets/css/reset.css'
-import '@/assets/css/common.css'
+// 全局样式
+import 'element-ui/lib/theme-chalk/index.css'
+import '@css/reset.css'
+import '@css/common.css'
+import '@css/components-reset.css'
 
 axios.install(Vue)
-Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(plugin)
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

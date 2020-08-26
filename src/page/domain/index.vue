@@ -37,11 +37,15 @@
       </el-input>
     </div>
     <div>
-      地点联想结果：{{address2}}
+      地点联想结果：
+      <div v-for="(val,index) in addressList.name" :key="index">
+        {{val}}
+      </div>
     </div>
   </div>
 </template>
 <script>
+import x2js from 'x2js' //xml数据处理插件
 export default {
   name: 'baidu',
   data () {
@@ -97,13 +101,13 @@ export default {
           region: '全国'
         }
       }).then((res) => {
-        console.log(res);
+        res = new x2js().xml2js(res);
+        if(res.PlaceSuggestionResponse.status === '0'){
+          this.addressList = res.PlaceSuggestionResponse.result;
+        }
       })
     }
   },
-  mounted() {
-
-  }
 }
 </script>
 <style lang="scss" scoped>

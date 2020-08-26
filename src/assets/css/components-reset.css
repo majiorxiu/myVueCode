@@ -1,0 +1,20 @@
+
+/* el-table 相关样式 ----------------- start */
+div.summary-top div.el-table__body-wrapper,
+div.summary-top div.el-table__fixed-body-wrapper {
+  margin-top: 49px;
+}
+div.summary-top div.el-table__fixed-footer-wrapper,
+div.summary-top div.el-table__footer-wrapper {
+  position: absolute;
+  top: 59px;
+  bottom: auto;
+}
+.el-table .el-table__body .el-table__row:nth-child(even) {
+  background-color: oldlace;
+}
+.el-table .el-table__header tr,
+.el-table .el-table__header th {
+  background-color: #f5f7fa;
+}
+/* el-table 相关样式 ----------------- end */

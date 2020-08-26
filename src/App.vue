@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import MyMenu from '@/page/layout/menu'
-import MyHeader from '@/page/layout/header'
-import bus from '@/js/eventBus'
+import MyMenu from '@page/layout/menu'
+// import MyHeader from '@page/layout/header'
+import bus from '@js/eventBus'
 export default {
   name: 'App',
-  components: {MyMenu, MyHeader},
+  components: {MyMenu},
   data() {
     return {
       routerLoad: false

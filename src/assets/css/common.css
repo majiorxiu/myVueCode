@@ -54,13 +54,3 @@
 .pos-abs {
   position: absolute;
 }
-div.summary-top div.el-table__body-wrapper,
-div.summary-top div.el-table__fixed-body-wrapper {
-  margin-top: 49px;
-}
-div.summary-top div.el-table__fixed-footer-wrapper,
-div.summary-top div.el-table__footer-wrapper {
-  position: absolute;
-  top: 59px;
-  bottom: auto;
-}
