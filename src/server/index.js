@@ -1,38 +1,25 @@
 import axios from 'axios'
 
 // 拦截request,设置全局请求为ajax请求
-
 axios.interceptors.request.use((config) => { 
-
  config.headers['X-Requested-With'] = 'XMLHttpRequest'  
-
     return config
-
 })
 
 // 拦截响应response，并做一些错误处理
-
 axios.interceptors.response.use((response) => { 
   const data = response.data
-
   // 根据返回的code值来做不同的处理（和后端约定）
-  
   // 若不是正确的返回code，且已经登录，就抛出错误 
   // if(1) {
     return data;
   // }
   // const err = new Error(data.description) 
-
   // err.data = data 
-
   // err.response = response 
-
   // throw err
-
   }, (err) => { 
-
   // 这里是返回状态码不为200时候的错误处理 
-
   if (err && err.response) {    
     switch (err.response.status) {
       case 400:
@@ -74,10 +61,28 @@ axios.interceptors.response.use((response) => {
   return Promise.reject(err)
 })
 
-axios.install = (Vue) => { 
+// axios.install = (Vue) => { 
+//  Vue.prototype.$ajax = axios
+// }
 
- Vue.prototype.$ajax = axios
-
+export default {
+  // 底层请求方法
+  get(url, params = {}) {
+    return new Promise((resolve, reject) =>{ 
+      axios.get(`/fineex/${url}`, {params}).then((res) => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  },
+  post(url, params = {}) {
+    return new Promise((resolve, reject) =>{ 
+      axios.get(`/fineex/${url}`, params).then((res) => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  },
 }
-
-export default axios

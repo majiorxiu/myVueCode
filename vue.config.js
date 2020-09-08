@@ -9,21 +9,6 @@ module.exports={
     https: false,
 		hot: true, //启用热替换模块  必须配置 webpack.HotModuleReplacementPlugin
 		proxy:{
-			// Paths
-			'/baidu': {
-        target: 'http://api.map.baidu.com',
-        changeOrigin: true,
-				pathRewrite: {
-						'/baidu': ''   //重写接口
-				}
-			},
-			'/gaode': {
-				target: 'https://restapi.amap.com',
-        changeOrigin: true,
-				pathRewrite: {
-						'/gaode': ''   //重写接口
-				}
-			},
 			'/fineex': {
 				target: 'http://cloud.wms.os.b1.fineex.net',
 				pathRewrite: {
@@ -37,8 +22,13 @@ module.exports={
     .set('@',resolve('src'))
     .set('@com',resolve('src/components'))
     .set('@page',resolve('src/page'))
+    .set('@views',resolve('src/page/views'))
     .set('@css',resolve('src/assets/css'))
+    .set('@image',resolve('src/assets/image'))
     .set('@js',resolve('src/js'))
+    .set('@dir',resolve('src/directive'))
+    .set('@ser',resolve('src/server/api'))
+    .set('@m',resolve('src/mixin'))
     //set第一个参数：设置的别名，第二个参数：设置的路径
   },
   css: {

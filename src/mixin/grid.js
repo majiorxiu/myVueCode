@@ -1,5 +1,6 @@
 import getCommand from './getCommand'
 export default {
+  // 表格页面必须引用, 封装分页组件相关配置属性及事件方法
   mixins: [getCommand],
   data () {
     return {

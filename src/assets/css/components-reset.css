@@ -13,8 +13,22 @@ div.summary-top div.el-table__footer-wrapper {
 .el-table .el-table__body .el-table__row:nth-child(even) {
   background-color: oldlace;
 }
+.el-table .el-table__body .el-table__row.select-row {
+  background-color: #fff29d;
+}
 .el-table .el-table__header tr,
 .el-table .el-table__header th {
   background-color: #f5f7fa;
 }
+
 /* el-table 相关样式 ----------------- end */
+/* el-form-item 相关样式 ----------------- start*/
+.el-input-group.el-input-group--append,
+.el-cascader.el-cascader--small,
+.el-select.el-select--small{
+  width: 200px;
+}
+.el-form-item--small .el-form-item__label {
+  width: 100px;
+}
+/* el-form-item 相关样式 ----------------- end */

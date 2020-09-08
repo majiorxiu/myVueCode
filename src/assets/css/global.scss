@@ -1,1 +1,71 @@
+// 全局变量 start
 $border-color: #e6e6e6;
+$--color-primary: #409EFF;
+// 全局变量 end
+
+// 全局样式 start
+.dis-flex {
+  flex-direction: row !important;
+}
+.dis-flex-col {
+  flex-direction: column !important;
+}
+.dis-flex,
+.dis-flex-col {
+  display: flex;
+  &-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.dis-flex,
+.dis-flex-col {
+  @each $flex in 1,2 {
+    .flex-#{$flex} {
+      flex: $flex
+    }
+  }
+}
+.page-title {
+  font-size: 2rem;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align:center;
+}
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+@each $align in left,center,right {
+  .text-#{str-slice($align, 1, 1)} {
+    text-align: $align;
+  }
+}
+@for $i from 1 through 3 {
+  .mg-t-#{$i}0 {
+    margin-top: 10px * $i;
+  }
+  .mg-r-#{$i}0 {
+    margin-right: 10px * $i;
+  }
+  .mg-b-#{$i}0 {
+    margin-bottom: 10px * $i;
+  }
+  .mg-l-#{$i}0 {
+    margin-left: 10px * $i;
+  }
+}
+@each $pos in relative, absolute{
+  .pos-#{str-slice($pos, 1, 3)} {
+    position: $pos;
+  }
+}
+
+// 全局样式 end
+
+// $--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+// @import "~element-ui/packages/theme-chalk/src/index";

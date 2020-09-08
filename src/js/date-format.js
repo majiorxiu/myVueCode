@@ -7,9 +7,6 @@ function addZero(v, size) {
 const date = {
   /**
    * [getTimeInterval 获取两个时间的间隔]
-   * @author dongsir
-   * @DateTime 2019-09-05
-   * @version  [version]
    * @param    {[type]}   st [开始时间]
    * @param    {[type]}   et [结束时间]
    * @return   {[type]}      [返回间隔的天、小时、分钟和秒]
@@ -30,6 +27,13 @@ const date = {
       timeStr += (timeLeft[0] <= 0 && timeLeft[1] <= 0 && timeLeft[2] <= 0 && timeLeft[3] <= 0) ? "" : timeLeft[3] + "秒";
       return timeStr;
   },
+  /**
+   * [getChangeDate 根据传入参数 年月日对应数字 返回累加后的日期]
+   * @param    {[type]}   $y [年-正负数值]
+   * @param    {[type]}   $m [月-正负数值]
+   * @param    {[type]}   $d [日-正负数值]
+   * @return   {[type]}      [返回当前日期累加后的日期]
+   */
   getChangeDate: function ({$y = 0, $m = 0, $d = 0} = {}) {
     let today = new Date();
     let yyyy = today.getFullYear()

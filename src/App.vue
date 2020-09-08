@@ -1,13 +1,9 @@
 <template>
-  <div class="main" @click="hideDialog">
+  <div class="my-main" @click="hideDialog">
     <el-container id="app">
-      <el-aside width="200px">
-        <my-menu/>
-      </el-aside>
-      <el-container>
-        <!-- <el-header>
-          <my-header/>
-        </el-header> -->
+      <my-menu v-if="!fullScreen"/>
+      <el-container class="dis-flex-col">
+        <my-header v-show="!fullScreen"/>
         <el-main class="scroll-bar">
           <router-view/>
         </el-main>
@@ -21,14 +17,16 @@
 
 <script>
 import MyMenu from '@page/layout/menu'
-// import MyHeader from '@page/layout/header'
+import MyHeader from '@page/layout/header'
 import bus from '@js/eventBus'
+import FullScreen from '@m/full-screen'
 export default {
   name: 'App',
-  components: {MyMenu},
+  components: {MyMenu, MyHeader},
+  mixins: [ FullScreen ],
   data() {
     return {
-      routerLoad: false
+      routerLoad: false,
     }
   },
   mounted () {
@@ -66,8 +64,8 @@ export default {
   height: 100%;
 }
 </style>
-<style lang="scss" scoped>
-.main {
+<style lang="scss">
+.my-main {
   height: 100%;
   position: relative;
   .router-load {
