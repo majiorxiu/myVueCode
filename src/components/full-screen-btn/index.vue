@@ -24,29 +24,25 @@ export default {
   methods: {
     //全屏
     fullScreen() {
-      var element = document.documentElement;
+      let element = document.documentElement
+      let full = ['requestFullscreen', 'msRequestFullscreen', 'mozRequestFullScreen', 'webkitRequestFullscreen']
+      let exitFull = ['exitFullscreen', 'msExitFullscreen', 'mozCancelFullScreen', 'webkitExitFullscreen']
       if(!this.isFullScreen) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
+        for(let i = 0; i < full.length; i++) {
+          if(element[full[i]]) {
+            element[full[i]]()
+            break;
+          }
         }
       } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
+        for(let i = 0; i < exitFull.length; i++) {
+          if(document[exitFull[i]]) {
+            document[exitFull[i]]()
+            break;
+          }
         }
       }
-      this.isFullScreen = !this.isFullScreen;
+      this.isFullScreen = !this.isFullScreen
     },
   }
 }

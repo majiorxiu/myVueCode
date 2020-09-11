@@ -20,6 +20,11 @@ div.summary-top div.el-table__footer-wrapper {
 .el-table .el-table__header th {
   background-color: #f5f7fa;
 }
+.el-table__body-wrapper.is-scrolling-left,
+.el-table__body-wrapper.is-scrolling-middle,
+.el-table__body-wrapper.is-scrolling-right{
+  height: calc(100% - 51px);
+}
 
 /* el-table 相关样式 ----------------- end */
 /* el-form-item 相关样式 ----------------- start*/

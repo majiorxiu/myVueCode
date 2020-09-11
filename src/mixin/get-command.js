@@ -4,6 +4,7 @@ export default {
   // 表单提交请求 也可使用,已实现表单验证
   data () {
     return {
+      loading: false,
       commandList:{}
     }
   },
@@ -18,10 +19,12 @@ export default {
           }
           let result = api(_filter)
           that[bindData] = afterSend ? afterSend(result) : result
+          that.loading = false
         }
       }
     },
     doAction({action, formName}) {
+      this.loading = true
       if(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {

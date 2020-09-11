@@ -74,6 +74,7 @@ const getThemeCluster = (theme) => {
 }
 const actions = {
   setThemeColor({commit} , {val = localStorage.getItem('theme-chalk'), oldVal = consts.ORIGINAL_THEME}) {
+    if (typeof val !== 'string') return
     const themeCluster = getThemeCluster(val.replace('#', ''))
     const originalCluster = getThemeCluster(oldVal.replace('#', ''))
     const getHandler = (id) => {

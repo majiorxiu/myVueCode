@@ -26,6 +26,7 @@ export default {
 	watch: {
     themeColor(val, oldVal) {
       if (typeof val !== 'string') return
+      oldVal = oldVal || localStorage.getItem('theme-chalk') || this.consts.ORIGINAL_THEME
       this.$store.dispatch('setThemeColor', {val, oldVal})
 			localStorage.setItem('theme-chalk', val);
     }

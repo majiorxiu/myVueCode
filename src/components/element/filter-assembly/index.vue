@@ -1,9 +1,9 @@
 <template>
-  <div class="filters" v-loading="loading">
+  <div class="filters dis-flex-col" v-loading="loading">
     <el-form id="filter-components" autocomplete="off" :model="form" ref="form" :inline="true">
       <el-form-item v-for="(item, index) in filtersList"
         :key="`form-${index}`"
-        :label="`${item.name}：`"
+        :label="item.type === 'checkbox' ? null : `${item.name}：`"
         :prop="`${item.model}`">
           <template v-if="item.type === 'grid'">
             <tab-grid
@@ -52,6 +52,9 @@
               :options="item.source || []"
               filterable/>
           </template>
+          <template v-else-if="item.type === 'checkbox'">
+            <el-checkbox v-model="form[item.model]">{{item.name}}</el-checkbox>
+          </template>
           <template v-else>
             <el-input
               @focus="focusEvent"
@@ -77,15 +80,16 @@
       </el-button>
     </div>
     <grid
+      class="flex-1"
       :data="tableData"
       :cols="tableOption.column"
       :id="tableOption.id"
-			:class-name="'mg-b-20 '"
 			:show-summary="tableOption.summary"
       :selection-col="tableOption.selection"
       v-model="selectList"
     />
     <el-pagination
+      class="mg-t-20"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="currentPage"

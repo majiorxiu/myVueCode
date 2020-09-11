@@ -1,13 +1,9 @@
-// 全局变量 start
-$border-color: #e6e6e6;
-$--color-primary: #409EFF;
-// 全局变量 end
-
 // 全局样式 start
 .dis-flex {
   flex-direction: row !important;
 }
 .dis-flex-col {
+  height: 100%;
   flex-direction: column !important;
 }
 .dis-flex,
@@ -33,11 +29,18 @@ $--color-primary: #409EFF;
   margin-bottom: 20px;
   text-align:center;
 }
-.float-l {
-  float: left;
+
+@each $align in left,right {
+  .float-#{str-slice($align, 1, 1)} {
+    float: $align;
+  }
 }
-.float-r {
-  float: right;
+.clear-both {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 @each $align in left,center,right {
   .text-#{str-slice($align, 1, 1)} {
@@ -65,7 +68,3 @@ $--color-primary: #409EFF;
 }
 
 // 全局样式 end
-
-// $--font-path: '~element-ui/lib/theme-chalk/fonts';
-
-// @import "~element-ui/packages/theme-chalk/src/index";

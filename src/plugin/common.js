@@ -5,10 +5,10 @@ const common = {
      window.clearTimeout(key);
    }
    key = setTimeout(() => {
-     fun();
+     fun()
      key = undefined
    }, wait)
-   return key;
+   return key
  }
 }
 export default common

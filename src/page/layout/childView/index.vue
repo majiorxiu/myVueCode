@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="dis-flex-col">
 		<el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="tabRemove" @tab-click="tabChage" v-if="!fullScreen">
 			<el-tab-pane
 				v-for="item in editableTabs"
@@ -10,7 +10,7 @@
 			</el-tab-pane>
 		</el-tabs>
 		<keep-alive>
-			<router-view/>
+			<router-view class="flex-1"/>
 		</keep-alive>
 	</div>
 </template>

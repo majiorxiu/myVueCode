@@ -1,5 +1,5 @@
 <template>
-  <div class="mg-t-10">
+  <div>
     <filter-form
       :filters-list="filtersList"
       :table-option="tableOption"
@@ -334,7 +334,19 @@ export default {
           type: 'time',
           timeType: 'daterange',
           option: 'within'
-        }
+        },
+        {
+          name: '颜色',
+          model: 'a15',
+          type: 'checkbox',
+          default: false
+        },
+        {
+          name: '颜色',
+          model: 'a16',
+          type: 'checkbox',
+          default: false
+        },
       ],
       tableOption: {
         id: 'lulululu',
